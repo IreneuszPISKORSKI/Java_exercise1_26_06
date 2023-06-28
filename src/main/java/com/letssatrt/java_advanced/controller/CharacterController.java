@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/character")
+@CrossOrigin
 public class CharacterController {
     private CharacterCollectionRepository repository;
 
