@@ -1,9 +1,9 @@
-package com.letssatrt.java_advanced;
+package com.letssatrt.java_advanced.characters;
 
 public record Character(
         Integer id,
         String name,
-        Integer type,
+        CharacterType type,
         Integer hp
         ) {
     

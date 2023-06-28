@@ -1,0 +1,30 @@
+### Get all characters
+GET http://localhost:8080/api/character
+
+### Get 1st character
+GET http://localhost:8080/api/character/1
+
+### Create new character
+POST http://localhost:8080/api/character
+Content-Type: application/json
+
+{
+  "id": 2,
+  "name": "aqweca",
+  "type": "Warrior",
+  "hp": 8
+}
+
+### Update character with id = 2
+PUT http://localhost:8080/api/character/2
+Content-Type: application/json
+
+{
+  "id": 2,
+  "name": "aqweca",
+  "type": "Mage",
+  "hp": 6
+}
+
+### Delete character
+DELETE http://localhost:8080/api/character/2

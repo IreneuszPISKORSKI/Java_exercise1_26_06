@@ -1,2 +1,3 @@
-package com.letssatrt.java_advanced;public class HelloWorldController {
+package com.letssatrt.java_advanced;
+public class HelloWorldController {
 }
