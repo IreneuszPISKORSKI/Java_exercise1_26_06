@@ -5,9 +5,7 @@ import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;
 import com.letssatrt.java_advanced.characters.Character;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Repository
 public class CharacterCollectionRepository {
@@ -17,6 +15,7 @@ public class CharacterCollectionRepository {
     }
 
     public List<Character> findAll(){
+        characterList.sort(Comparator.comparing(Character::id));
         return characterList;
     }
 
@@ -24,11 +23,11 @@ public class CharacterCollectionRepository {
         return characterList.stream().filter(c->c.id().equals(id)).findFirst();
     }
 
-    @PostConstruct
-    private void init(){
-        Character newCharacter = new Character(1,"aze", CharacterType.Mage, 8);
-        characterList.add(newCharacter);
-    }
+//    @PostConstruct
+//    private void init(){
+//        Character newCharacter = new Character(1,"aze", CharacterType.Mage, 8);
+//        characterList.add(newCharacter);
+//    }
 
     public void save(Character character){
         characterList.removeIf(c->c.id().equals(character.id()));

@@ -25,7 +25,7 @@ public class CharacterController {
 
     @GetMapping("/{id}")
     public Character findById(@PathVariable Integer id){
-        return repository.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND, "Character not found"));
+        return repository.findById(id).orElse(null);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -46,6 +46,9 @@ public class CharacterController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Integer id){
+//        if(!repository.existById(id)){
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Character not found");
+//        }
         repository.delete(id);
     }
 }
