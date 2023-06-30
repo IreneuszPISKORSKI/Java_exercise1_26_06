@@ -1,20 +1,22 @@
 package com.letssatrt.java_advanced.controller;
 
 import com.letssatrt.java_advanced.characters.Character;
-import com.letssatrt.java_advanced.repository.CharacterCollectionRepository;
+import com.letssatrt.java_advanced.dao.CharacterDao;
+//import com.letssatrt.java_advanced.repository.CharacterCollectionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/api/character")
 @CrossOrigin
 public class CharacterController {
-    private CharacterCollectionRepository repository;
+    @Autowired
+    private CharacterDao repository;
 
-    public CharacterController(CharacterCollectionRepository repository){
+    public CharacterController(CharacterDao repository){
         this.repository = repository;
     }
 
@@ -24,8 +26,8 @@ public class CharacterController {
     }
 
     @GetMapping("/{id}")
-    public Character findById(@PathVariable Integer id){
-        return repository.findById(id).orElse(null);
+    public Character findById(@PathVariable int id){
+        return repository.findById(id);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -36,8 +38,8 @@ public class CharacterController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
-    public void update(@RequestBody Character character, @PathVariable Integer id){
-        if(!repository.existById(id)){
+    public void update(@RequestBody Character character, @PathVariable int id){
+        if(!repository.existsById(id)){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Character not found");
         }
         repository.save(character);
@@ -45,10 +47,7 @@ public class CharacterController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id){
-//        if(!repository.existById(id)){
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Character not found");
-//        }
-        repository.delete(id);
+    public void delete(@PathVariable int id){
+        repository.deleteById(id);
     }
 }
