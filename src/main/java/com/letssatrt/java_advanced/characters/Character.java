@@ -10,6 +10,9 @@ public final class Character {
         private int id;
         private String name;
 
+        private CharacterType type;
+
+        private int hp;
         public int getId() {
                 return id;
         }
@@ -41,9 +44,6 @@ public final class Character {
         public void setHp(int hp) {
                 this.hp = hp;
         }
-
-        private CharacterType type;
-        private int hp;
 
         public Character(
                 int id,
