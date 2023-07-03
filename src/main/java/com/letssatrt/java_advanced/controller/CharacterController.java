@@ -33,7 +33,7 @@ public class CharacterController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
     public void create(@RequestBody Character character){
-        repository.save(character);
+        Character resp = repository.save(character);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
