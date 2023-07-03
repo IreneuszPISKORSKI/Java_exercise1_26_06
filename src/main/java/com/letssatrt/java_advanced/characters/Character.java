@@ -3,10 +3,10 @@ package com.letssatrt.java_advanced.characters;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "`character`")
+@Table(name = "my_character")
 public final class Character {
         @Id
-        @GeneratedValue
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int id;
         private String name;
 
