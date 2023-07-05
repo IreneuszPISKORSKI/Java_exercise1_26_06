@@ -5,9 +5,7 @@ import com.letssatrt.java_advanced.dao.CharacterDao;
 //import com.letssatrt.java_advanced.repository.CharacterCollectionRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +16,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/character")
 @CrossOrigin
-@Tag(name = "We are controlling all the things here!")
 public class CharacterController {
     @Autowired
     private CharacterDao repository;
@@ -31,7 +28,7 @@ public class CharacterController {
     @Operation(
             summary = "Get list of all characters",
             description = "This allows you to display all existing characters!",
-            tags = "With more options in response!",
+            tags = "But i have more options in response!",
             responses ={
                     @ApiResponse(responseCode = "200", description = "Found the character",
                             content = {@Content(mediaType = "application/json")}),
@@ -44,7 +41,8 @@ public class CharacterController {
 
     @GetMapping("/{id}")
     @Operation(
-            summary = "Show character with certain id"
+            summary = "Show character with certain id",
+            tags = "We are controlling all the things here!"
     )
     public Character findById(@PathVariable int id){
         return repository.findById(id);
@@ -53,7 +51,8 @@ public class CharacterController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
     @Operation(
-            summary = "Here you can add new character"
+            summary = "Here you can add new character",
+            tags = "We are controlling all the things here!"
 //            parameters = {id}
     )
     public void create(@RequestBody Character character){
@@ -63,7 +62,8 @@ public class CharacterController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{id}")
     @Operation(
-            summary = "Here you can update your character"
+            summary = "Here you can update your character",
+            tags = "We are controlling all the things here!"
     )
     public void update(@RequestBody Character character, @PathVariable int id){
         if(!repository.existsById(id)){
@@ -75,7 +75,8 @@ public class CharacterController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     @Operation(
-            summary = "This will delete your character with selected id"
+            summary = "This will delete your character with selected id",
+            tags = "We are controlling all the things here!"
     )
     public void delete(@PathVariable int id){
         repository.deleteById(id);
