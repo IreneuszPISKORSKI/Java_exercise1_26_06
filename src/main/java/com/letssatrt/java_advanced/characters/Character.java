@@ -1,14 +1,35 @@
 package com.letssatrt.java_advanced.characters;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "my_character")
+@Schema(name = "Schema of the character", description = "This is a schema of the character and example values")
 public final class Character {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Schema(
+                example = "5"
+        )
         private int id;
+        @Schema(
+                example = "Tomato the Great"
+        )
         private String name;
+        @Schema(
+                type = "enum",
+                example = "Warrior"
+        )
+        private CharacterType type;
+
+        @Schema(
+                example = "9"
+        )
+        private int hp;
 
         public int getId() {
                 return id;
@@ -41,9 +62,6 @@ public final class Character {
         public void setHp(int hp) {
                 this.hp = hp;
         }
-
-        private CharacterType type;
-        private int hp;
 
         public Character(
                 int id,
