@@ -21,7 +21,6 @@ public final class Character {
         )
         private String name;
         @Schema(
-                type = "enum",
                 example = "Warrior"
         )
         private CharacterType type;

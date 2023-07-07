@@ -28,7 +28,7 @@ public class CharacterController {
     @Operation(
             summary = "Get list of all characters",
             description = "This allows you to display all existing characters!",
-            tags = "But i have more options in response!",
+            tags = "New Tag",
             responses ={
                     @ApiResponse(responseCode = "200", description = "Found the character",
                             content = {@Content(mediaType = "application/json")}),
@@ -55,8 +55,9 @@ public class CharacterController {
             tags = "We are controlling all the things here!"
 //            parameters = {id}
     )
-    public void create(@RequestBody Character character){
+    public Character create(@RequestBody Character character){
         repository.save(character);
+        return character;
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
